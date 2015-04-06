@@ -8,17 +8,17 @@ package infix;
 
 public class Stack {
 	private int top;
-	protected int size;
+	//protected int size;
 	protected char[] postfix, infix;
 	
-	public Stack() {
+	public Stack(int size) {
 		postfix = new char[size];
 		infix = new char[size];
 		top = -1;
 	}
 	
 	public boolean isFull() {
-		return top == infix.length - 1;
+		return top == postfix.length - 1;
 	}
 	
 	public boolean isEmpty() {
@@ -30,7 +30,7 @@ public class Stack {
 			System.out.println("The Stack is Full");
 		} else {
 			top++;
-			infix[top] = symbol;
+			postfix[top] = symbol;
 		}
 	}
 	
@@ -39,7 +39,7 @@ public class Stack {
 			System.out.println("The Stack is Empty");
 			return 0;
 		} else {
-			char temp = infix[top];
+			char temp = postfix[top];
 			top--;
 			return temp;
 		}
