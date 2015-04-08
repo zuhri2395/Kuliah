@@ -1,5 +1,6 @@
 /**
- * 
+ * This class extends to Stack Class
+ * and handle the conversion of infix expression into postfix expression 
  * @author Muhammad Zuhri Hanifullah, A11.2013.07880, IUP-DINUS
  *
  */
@@ -14,7 +15,8 @@ public class Infix extends Stack{
 		super(size);
 		this.input = input;
 		theStack = new Stack(size);
-		for(int i = 0, j = 0; i < this.input.length(); i++ ) {
+		theStack.infix[size-1] = ')';
+		for(int i = 0, j = 0; i < size-1; i++ ) {
 			theStack.infix[i] = this.input.charAt(j);
 			j++;
 		}
@@ -45,9 +47,10 @@ public class Infix extends Stack{
 	}
 	
 	public void convert() {
-		int len = input.length();
+		int len = input.length()+1;
 		char ch;
 		
+		theStack.push('(');
 		for(int i = 0; i < len; i++) {
 			switch(prec(theStack.infix[i])) {
 				case 1:

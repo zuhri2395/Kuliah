@@ -1,5 +1,5 @@
 /**
- * 
+ * This class handle the Stack
  * @author Muhammad Zuhri Hanifullah, A11.2013.07880, IUP-DINUS
  *
  */
@@ -9,10 +9,11 @@ package infix;
 public class Stack {
 	private int top;
 	//protected int size;
-	protected char[] postfix, infix;
+	protected char[] infix;
+	private int[] postfix;
 	
 	public Stack(int size) {
-		postfix = new char[size];
+		postfix = new int[size];
 		infix = new char[size];
 		top = -1;
 	}
@@ -39,7 +40,7 @@ public class Stack {
 			System.out.println("The Stack is Empty");
 			return 0;
 		} else {
-			char temp = postfix[top];
+			char temp = (char) postfix[top];
 			top--;
 			return temp;
 		}
