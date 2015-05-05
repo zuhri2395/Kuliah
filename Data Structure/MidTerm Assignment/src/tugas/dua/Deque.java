@@ -1,14 +1,15 @@
 /**
+ * This class is an answer for Project 4.2
  * @author Muhammad Zuhri Hanifullah, A11.2013.07880, IUP-DINUS
  *
- * 
  */
+
 package tugas.dua;
 
-public class Deque {
-	private int maxSize, front, rear, nItems;
-	private long[] queArray;
+import tugas.BasicFunction;
 
+public class Deque extends BasicFunction{
+	
 	public Deque(int size) {
 		maxSize = size;
 		queArray = new long[maxSize];
@@ -23,31 +24,27 @@ public class Deque {
 			if (rear == maxSize - 1) {
 				rear = -1;
 			}
-			
 			rear++;
 			queArray[rear] = input;
+			
 			nItems++;
 		}
 	}
+
 	
 	public void insertLeft(long input) {
 		if (isFull()) {
 			System.out.println("Queue is full");
 		} else {
-			/*if (front == -1) {
-				front = (maxSize - 1);
-			}
-			front--;
-			queArray[front] = input;
-			nItems++;*/
-			
-	
 			if(front == 0 && nItems == 0) {
 				queArray[front] = input;
 				nItems++;
 				front = maxSize;
 			} else {
 				front--;
+				if(front == -1) {
+					front = maxSize-1;
+				}
 				queArray[front] = input;
 				nItems++;
 			}
@@ -67,11 +64,6 @@ public class Deque {
 			}
 
 			nItems--;
-			/*
-			 if(nItems == 0) {
-			 	front = rear = 0;
-			 }
-			 */
 			return temp;
 		}
 	}
@@ -91,21 +83,5 @@ public class Deque {
 			nItems--;
 			return temp;
 		}
-	}
-
-	public long peekFront() {
-		return queArray[front];
-	}
-
-	public boolean isEmpty() {
-		return nItems == 0;
-	}
-
-	public boolean isFull() {
-		return nItems == maxSize;
-	}
-
-	public int size() {
-		return nItems;
 	}
 }

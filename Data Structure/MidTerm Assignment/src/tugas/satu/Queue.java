@@ -1,15 +1,15 @@
 /**
- * 
+ * This class is an answer for Project 4.1
  * @author Muhammad Zuhri Hanifullah, A11.2013.07880, IUP-DINUS
  *
  */
 
 package tugas.satu;
 
-public class Queue {
-	private int maxSize, front, rear, nItems;
-	private long[] queArray;
+import tugas.BasicFunction;
 
+public class Queue extends BasicFunction{
+	
 	public Queue(int size) {
 		maxSize = size;
 		queArray = new long[maxSize];
@@ -47,24 +47,8 @@ public class Queue {
 		}
 	}
 
-	public long peekFront() {
-		return queArray[front];
-	}
-
-	public boolean isEmpty() {
-		return nItems == 0;
-	}
-
-	public boolean isFull() {
-		return nItems == maxSize;
-	}
-
-	public int size() {
-		return nItems;
-	}
-
 	public void show() {
-		int counter = 0, size = nItems, index = front;
+		int counter = 0, index = front;
 
 		do {
 			if(index == maxSize) {
@@ -74,6 +58,7 @@ public class Queue {
 			System.out.print(queArray[index] + " ");
 			index++;
 			counter++;
-		} while (counter < nItems);
+		} while (counter < size());
+		System.out.println();
 	}
 }

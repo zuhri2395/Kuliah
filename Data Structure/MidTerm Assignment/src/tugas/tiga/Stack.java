@@ -1,37 +1,31 @@
 /**
+ * This class is an answer for Project 4.3
  * @author Muhammad Zuhri Hanifullah, A11.2013.07880, IUP-DINUS
  *
- * 
  */
 
 package tugas.tiga;
 
-public class Stack {
-	private int top, bottom, maxSize, nItems;
+import tugas.BasicFunction;
+
+public class Stack extends BasicFunction{
+	private int top, bottom;
 	private long[] data;
 	
 	public Stack(int j) {
 		maxSize = j;
 		data = new long[maxSize];
-		top = bottom = -1;
+		top = -1;
+		bottom = 0;
 	}
 	
 	public void push(long input) {
 		if(isFull()) {
 			System.out.println("Stack is Full");
 		} else {
-			if(bottom > 0) {
-				for(int i = 0; i < maxSize; i++) {
-					data[i] = data[i+1];
-				}
-				top++;
-				data[top] = input;
-				nItems++;
-			} else {
-				top++;
-				data[top] = input;
-				nItems++;
-			}
+			top++;
+			data[top] = input;
+			nItems++;
 		}
 	}
 	
@@ -44,9 +38,6 @@ public class Stack {
 			top--;
 			nItems--;
 			
-			if(top == bottom) {
-				top = bottom = 0;
-			}
 			return temp;
 		}
 	}
@@ -56,23 +47,37 @@ public class Stack {
 			System.out.println("Stack is Empty");
 			return 0;
 		} else {
-			bottom++;
 			long temp = data[bottom];
-			nItems--;
-			
-			if(top == bottom) {
-				top = bottom = 0;
+			for(int i = 0; i < maxSize-1; i++) {
+                data[i] = data[i+1];
 			}
-			
+			top--;
+			nItems--;
 			return temp;
 		}
 	}
 	
-	public boolean isEmpty() {
-		return nItems == 0;
+	public void showFromTop() {
+		int counter = 0, index = top;
+        do {
+            if(index == maxSize) {
+                index = 0;
+            }
+            System.out.print(data[index] + " ");
+            index--;
+            counter++;
+        } while(counter < nItems);
 	}
 	
-	public boolean isFull() {
-		return nItems == maxSize;
+	public void showFromBottom() {
+		int counter = 0, index = bottom;
+        do {
+            if(index == maxSize) {
+                index = 0;
+            }
+            System.out.print(data[index] + " ");
+            index++;
+            counter++;
+        } while(counter < nItems);
 	}
 }
