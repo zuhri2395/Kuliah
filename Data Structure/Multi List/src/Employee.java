@@ -12,4 +12,12 @@ public class Employee {
 	this.address = address;
 	this.salary = salary;
     }
+    
+    public void destroy() {
+	this.id = 0;
+	this.name = null;
+	this.address = null;
+	this.salary = 0;
+	this.kids = null;
+    }
 }
